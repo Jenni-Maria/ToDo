@@ -3,15 +3,15 @@ import { useEffect, useState } from 'react';
 import { FlatList, SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Constants from 'expo-constants'
-import { useFonts } from 'expo-font';
+//import { useFonts } from 'expo-font';
 
 const STORAGE_KEY = 'todos'
 
 export default function App() {
 
-  const [loaded] = useFonts({
+ /* const [loaded] = useFonts({
     MsMadiRegular: require('./assets/fonts/MsMadi-Regular.ttf'),
-  });
+  });*/
 
 
   const [newTodo, setNewTodo] = useState('')
@@ -21,6 +21,7 @@ export default function App() {
     const newKey = String(todos.length)
     const object = {key: newKey, description: newTodo}
     const newTodos = [...todos, object]
+      storeData(newTodos)
       setTodos(newTodos)
       setNewTodo('')
   }
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: Platform.OS === 'android' ? Constants.statusBarHeight:0,
-    backgroundColor: '#fcdb9d',
+    backgroundColor: '#fef4e3',
     alignItems: 'left',
     paddingLeft: 10,
     paddingRight: 10,
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 40,
-    fontFamily: 'MsMadiRegular', //muista kirjoittaa fontin nimi yhteen ilman väliviivoja tms.
+    //fontFamily: 'MsMadiRegular', //muista kirjoittaa fontin nimi yhteen ilman väliviivoja tms.
     textAlign: 'left',
     paddingLeft: 8,
     marginTop: 8,
@@ -103,7 +104,7 @@ const styles = StyleSheet.create({
   list: {
     //margin: 10,
     paddingLeft: 10,
-    fontFamily: 'MsMadiRegular',
+    //fontFamily: 'MsMadiRegular',
     fontSize: 15,
   },
   row: {
